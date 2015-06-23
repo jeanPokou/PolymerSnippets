@@ -1,0 +1,48 @@
+<snippet>
+	<content><![CDATA[
+<dom-module id="$1" attributes="$2">
+	<template>
+		<style>
+			:host {
+				display: block;
+			}
+		</style>$3
+	</template>
+	<script>
+		Polymer({
+			is:'$1',
+			behaviors: [
+		    Polymer.NeonAnimationRunnerBehavior
+		  ],
+		  properties: {
+		    animationConfig: {
+		      value: function() {
+		        return {
+		          // provided by neon-animation/animations/scale-down-animation.html
+		          name: 'scale-down-animation',
+		          node: this
+		        }
+		      }
+		    }
+		  },
+		  listeners: {
+		    // this event is fired when the animation finishes
+		    'neon-animation-finish': '_onNeonAnimationFinish'
+		  },
+		  animate: function() {
+		    // run scale-down-animation
+		    this.playAnimation();
+		  },
+		  _onNeonAnimationFinish: function() {
+		    console.log('animation done!');
+		  }
+		});
+	</script>
+</dom-module>
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>pe Animated</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>text.html</scope>
+	<description>polymer element 1.0 with basic animated boilercode </description>
+</snippet>
